@@ -7,6 +7,7 @@ import {Drawer} from "@mui/material";
 import {useGetSnippets} from "../utils/queries.tsx";
 import {usePaginationContext} from "../contexts/paginationContext.tsx";
 import useDebounce from "../hooks/useDebounce.ts";
+import {useAuth0} from "@auth0/auth0-react";
 
 const HomeScreen = () => {
   const {id: paramsId} = useParams<{ id: string }>();
@@ -21,6 +22,11 @@ const HomeScreen = () => {
       handleChangeCount(data.count)
     }
   }, [count, data?.count, handleChangeCount]);
+
+ const {isAuthenticated} = useAuth0()
+    useEffect(() => {
+        console.log(isAuthenticated)
+    }, [isAuthenticated]);
 
 
   useEffect(() => {
