@@ -1,7 +1,7 @@
 # image for building the project
 FROM node:22-alpine as BUILD_IMAGE
 # define the working directory
-WORKDIR /app/Printscript13-UI
+WORKDIR /app/printscript-ui
 # copy the package.json file to the working directory
 COPY package.json .
 # install the dependencies
@@ -14,10 +14,10 @@ RUN npm run build
 # generate the production image, which will be used to run the application. This is just a cleaning up of the build image for a lighter image
 FROM node:22-alpine as PRODUCTION_IMAGE
 # define the working directory
-WORKDIR /app/Printscript13-UI
+WORKDIR /app/printscript-ui
 
 # copy the dist file (project builded) to the working directory
-COPY --from=BUILD_IMAGE /app/Printscript13-UI/dist /app/Printscript13-UI/dist
+COPY --from=BUILD_IMAGE /app/printscript-ui/dist /app/printscript-ui/dist
 # expose the port
 EXPOSE 5173
 
