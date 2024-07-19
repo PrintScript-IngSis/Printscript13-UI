@@ -13,7 +13,7 @@ import { FakeFileTypeStore } from "./fakeStore";
 // const DELAY: number = 1000;
 const API_BASE_URL = import.meta.env.VITE_REACT_APP_BACKEND_URL;
 
-const getCookie = (name: string): any => {
+const getCookie = (name: string): string | null => {
   const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
   if (match) {
     return match[2];
@@ -60,6 +60,7 @@ export class RealSnippetOperations implements SnippetOperations {
     page: number,
     pageSize: number
   ): Promise<PaginatedSnippets> {
+    console.log(page, pageSize)
     const response = await this.api.get(`/snippet`);
     return {snippets:response.data, page:0, page_size:1, count:1};
   }
@@ -108,6 +109,7 @@ export class RealSnippetOperations implements SnippetOperations {
     page?: number,
     pageSize?: number
   ): Promise<PaginatedUsers> {
+    console.log(name, page, pageSize)
     const response = await this.api.get(`/snippet/share/${snippetId}`);
     return {
       users: response.data as User[],

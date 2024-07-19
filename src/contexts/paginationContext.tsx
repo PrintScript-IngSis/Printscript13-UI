@@ -12,10 +12,10 @@ export type PaginationContextType = {
 export const defaultPagination = {
   page: 0,
   page_size: 10,
-  count: 10
+  count: 10,
 }
 
-// @ts-expect-error
+// @ts-expect-error can be null
 export const PaginationContext = createContext<PaginationContextType>(null)
 
 export const usePaginationContext = (): PaginationContextType => useContext(PaginationContext)

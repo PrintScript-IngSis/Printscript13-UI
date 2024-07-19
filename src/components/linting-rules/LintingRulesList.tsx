@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Button,
   Card,
@@ -57,7 +57,7 @@ const LintingRulesList = () => {
           <Typography style={{ height: 80 }}>Loading...</Typography>
         ) : (
           rules &&
-          Object.keys(rules).map((rule, index) => {
+          Object.keys(rules).map((rule) => {
             return (
               <ListItem
                 key={rule}
@@ -80,7 +80,8 @@ const LintingRulesList = () => {
                   <div></div>
                 )}
                 <ListItemText primary={rule} />
-                {typeof rules[rule] === "string" ? (
+                {
+                  typeof rules[rule] === "string" ? (
                   <TextField
                     variant={"standard"}
                     value={rules[rule]}

@@ -96,7 +96,6 @@ export const SnippetDetail = (props: SnippetDetailProps) => {
     mutate: runSnippet,
     isLoading: isRunSnippetLoading,
     data: result,
-    error,
   } = useRunSnippet();
 
   useEffect(() => {
@@ -151,13 +150,13 @@ export const SnippetDetail = (props: SnippetDetailProps) => {
             </Tooltip>
             <DownloadButton snippet={snippet} />
             <Tooltip title={isRunSnippetLoading ? "Stop run" : "Run"}>
-              <IconButton onClick={() => runSnippet(snippet)}>
+              <IconButton onClick={() => runSnippet(snippet!)}>
                 {isRunSnippetLoading ? <StopRounded /> : <PlayArrow />}
               </IconButton>
             </Tooltip>
             <Tooltip title={"Format"}>
               <IconButton
-                onClick={() => formatSnippet(snippet)}
+                onClick={() => formatSnippet(snippet!)}
                 disabled={isFormatLoading}
               >
                 <ReadMoreIcon />
@@ -167,7 +166,7 @@ export const SnippetDetail = (props: SnippetDetailProps) => {
               <IconButton
                 color={"primary"}
                 onClick={() =>
-                  updateSnippet({ id: id, content: code, name: snippet.name })
+                  updateSnippet({ id: id, content: code, name: snippet!.name })
                 }
                 disabled={isUpdateSnippetLoading || snippet?.content === code}
               >
@@ -218,7 +217,7 @@ export const SnippetDetail = (props: SnippetDetailProps) => {
         onClose={() => setShareModalOppened(false)}
         onShare={handleShareSnippet}
         id={id}
-        userName={snippet?.userName}
+        userName={snippet?.userName ?? ""}
       />
       <TestSnippetModal
         open={testModalOpened}
