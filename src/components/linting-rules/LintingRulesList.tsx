@@ -43,7 +43,6 @@ const LintingRulesList = () => {
     
     const newRules = {
       ...rules,
-      // @ts-expect-error because can be nul
       [currentRule]: !rules[currentRule],
     } as LintRule[];
     setRules(newRules);
