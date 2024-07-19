@@ -25,8 +25,8 @@ export const Navbar = () => {
     const navigate = useNavigate();
     const { isAuthenticated, logout } = useAuth0();
     return (
-        <AppBar position="static" elevation={0}>
-            <Container maxWidth="xl">
+        <AppBar position="static" elevation={0} sx={{backgroundColor:"#ffecef"}}>
+            <Container maxWidth="xl" sx={{backgroundColor:"#ffecef"}}>
                 <Toolbar disableGutters sx={{display: "flex", gap: "24px"}}>
                     <Typography
                         variant="h6"
@@ -35,13 +35,14 @@ export const Navbar = () => {
                         sx={{
                             display: {xs: 'none', md: 'flex'},
                             fontWeight: 700,
-                            color: 'inherit',
+                            color: 'black',
                             textDecoration: 'none',
+                            backgroundColor:'#ffecef'
                         }}
                     >
                         Printscript
                     </Typography>
-                    <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}, gap: '4px'}}>
+                    <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}, gap: '4px', backgroundColor:'#ffecef'} }>
                         {pages.map((page) => (
                             <Button
                                 key={page.title}
@@ -52,9 +53,9 @@ export const Navbar = () => {
                                     display: 'flex',
                                     justifyContent: "center",
                                     gap: "4px",
-                                    backgroundColor: location.pathname === page.path ? 'primary.light' : 'transparent',
+                                    backgroundColor: location.pathname === page.path ? 'pink' : 'pink',
                                     "&:hover": {
-                                        backgroundColor: 'primary.dark'
+                                        backgroundColor: '#ff80ab'
                                     }
                                 }}
                             >
@@ -69,9 +70,9 @@ export const Navbar = () => {
                                     display: 'flex',
                                     justifyContent: "center",
                                     gap: "4px",
-                                    backgroundColor:'primary.light',
+                                    backgroundColor:'pink',
                                     "&:hover": {
-                                        backgroundColor: 'primary.dark'
+                                        backgroundColor: '#ff80ab'
                                     }
                                 }}
                             onClick={() =>
