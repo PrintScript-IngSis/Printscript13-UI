@@ -40,9 +40,10 @@ const LintingRulesList = () => {
   };
 
   const toggleRule = (currentRule: string) => () => {
+    
     const newRules = {
       ...rules,
-      // @ts-ignore
+      // @ts-expect-error because can be nul
       [currentRule]: !rules[currentRule],
     } as LintRule[];
     setRules(newRules);

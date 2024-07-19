@@ -60,13 +60,8 @@ export class RealSnippetOperations implements SnippetOperations {
     page: number,
     pageSize: number
   ): Promise<PaginatedSnippets> {
-    const response = await this.api.get(`/snippet`, {
-      params: {
-        page,
-        page_size: pageSize,
-      },
-    });
-    return response.data;
+    const response = await this.api.get(`/snippet`);
+    return {snippets:response.data, page:0, page_size:1, count:1};
   }
 
   async updateSnippetById(
