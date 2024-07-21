@@ -29,7 +29,7 @@ export class RealSnippetOperations implements SnippetOperations {
   constructor() {
     const token = getCookie("session");
     this.api = axios.create({
-      baseURL: API_BASE_URL,
+      baseURL: "https://dev.banguibeans.com/api",
       headers: {
         Authorization: `Bearer ${token}`,
       },
